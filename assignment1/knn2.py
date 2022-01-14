@@ -296,10 +296,12 @@ plt.show()
 # retrain the classifier using all the training data, and test it on the test
 # data. You should be able to get above 28% accuracy on the test data.
 best_k = k_choices[np.argmax(accuracies_mean)]
+# load the original data...
+print('The Best K value ='str+(best_k))
 
 classifier = KNearestNeighbor()
-classifier.train(X_train, y_train)
-y_test_pred = classifier.predict(X_test, k=best_k)
+classifier.train(X_train, best_k)
+y_test_pred = classifier.predict(X_test, best_k)
 
 # Compute and display the accuracy
 num_correct = np.sum(y_test_pred == y_test)
